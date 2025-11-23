@@ -19,7 +19,7 @@
     ],
     "scripts": {
         "//  BUILD  //": "",
-        "build": "tsup ./source/index.ts --dts --format esm,cjs",
+        "build": "tsup ./source/index.ts --minify --dts --format esm,cjs",
         "//  RELEASE  //": "",
         "release": "run-s build release:np",
         "release:np": "np --no-tests --no-release-draft --message 'v%s'"
