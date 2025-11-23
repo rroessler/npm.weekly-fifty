@@ -13,6 +13,20 @@ export async function Fetch(options: Fetch.Options = {}) {
     return fetch(url).then(parse);
 }
 
+/** The baseline quiz URL. */
+export function URL() {
+    return 'https://weeklyfifty-7617b.web.app/api';
+}
+
+//  NAMESPACES  //
+
+export namespace URL {
+    //  PUBLIC METHODS  //
+
+    /** The latest quiz URL. */
+    export const Latest = () => `${URL()}/getLatestQuiz`;
+}
+
 export namespace Fetch {
     //  TYPEDEFS  //
 
@@ -74,11 +88,7 @@ export namespace Fetch {
      * @param options
      * @returns
      */
-    export const Options = (options: Options = {}): Required<Options> => ({
-        url: 'https://weeklyfifty-7617b.web.app/api/getLatestQuiz',
-        parse: m_parse,
-        ...options,
-    });
+    export const Options = (options: Options = {}): Required<Options> => ({ url: URL(), parse: m_parse, ...options });
 
     //  PRIVATE METHODS  //
 
