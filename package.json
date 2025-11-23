@@ -20,11 +20,9 @@
     "scripts": {
         "//  BUILD  //": "",
         "build": "tsup ./source/index.ts --dts --format esm,cjs",
-        "//  TEST  //": "",
-        "test": "",
         "//  RELEASE  //": "",
         "release": "run-s build release:np",
-        "release:np": "np"
+        "release:np": "np --no-tests --no-release-drafts --message 'v%s'"
     },
     "dependencies": {
         "myzod": "^1.12.1"
