@@ -21,8 +21,12 @@
         "//  BUILD  //": "",
         "build": "tsup ./source/index.ts --minify --dts --format esm,cjs",
         "//  RELEASE  //": "",
-        "release": "run-s build release:np",
-        "release:np": "np --no-tests --no-release-draft --message 'v%s'"
+        "release": "run-s build release:np clean:tags",
+        "release:np": "np --no-tests --no-release-draft --message 'v%s'",
+        "//  CLEAN  //": "",
+        "clean:tags": "run-s clean:tags:*",
+        "clean:tags:remote": "git tag -l | xargs -n 1 git push --delete origin",
+        "clean:tags:local": "git tag | xargs git tag -d"
     },
     "dependencies": {
         "myzod": "^1.12.1"
