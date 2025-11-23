@@ -1,12 +1,16 @@
 {
     "type": "module",
+    "license": "MIT",
     "version": "1.0.0",
     "name": "weekly-fifty",
+    "author": "Reuben Roessler",
     "repository": "rroessler/npm.weekly-fifty",
     "description": "Library for fetching 'The Weekly Fifty' quizzes",
     "main": "./dist/index.cjs",
     "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
     "exports": {
+        "types": "./dist/index.d.ts",
         "import": "./dist/index.mjs",
         "require": "./dist/index.cjs"
     },
@@ -15,10 +19,7 @@
     ],
     "scripts": {
         "//  BUILD  //": "",
-        "build": "npm-run-all build:lint --parallel build:cjs build:mjs",
-        "build:lint": "tsc --noEmit",
-        "build:cjs": "esbuild ./source/index.ts --bundle --minify --format=cjs --outfile=./dist/index.cjs",
-        "build:mjs": "esbuild ./source/index.ts --bundle --minify --format=esm --outfile=./dist/index.mjs",
+        "build": "tsup ./source/index.ts --dts --format esm,cjs",
         "//  PACKAGE  //": "",
         "publish": "run-s build publish:np",
         "publish:np": "np"
@@ -28,9 +29,9 @@
     },
     "devDependencies": {
         "@tsconfig/recommended": "^1.0.13",
-        "esbuild": "^0.27.0",
         "np": "^10.2.0",
         "npm-run-all2": "^8.0.4",
+        "tsup": "^8.5.1",
         "tsx": "^4.20.6",
         "typescript": "^5.9.3"
     }
