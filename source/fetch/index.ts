@@ -85,10 +85,13 @@ export namespace Fetch {
 
     /**
      * Handles resolving options to be used.
-     * @param options
-     * @returns
+     * @param options                   Options to resolve.
      */
-    export const Options = (options: Options = {}): Required<Options> => ({ url: URL(), parse: m_parse, ...options });
+    export const Options = (options: Options = {}): Required<Options> => ({
+        url: URL.Latest(),
+        parse: m_parse,
+        ...options,
+    });
 
     //  PRIVATE METHODS  //
 
