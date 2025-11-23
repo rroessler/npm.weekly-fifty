@@ -1,0 +1,9 @@
+{
+    "include": ["source", "test"],
+    "exclude": ["dist", "node_modules"],
+    "extends": "@tsconfig/recommended/tsconfig.json",
+    "compilerOptions": {
+        "outDir": "dist",
+        "target": "esnext"
+    }
+}

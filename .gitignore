@@ -1,0 +1,8 @@
+# Node Development
+node_modules
+
+# Project Outputs
+dist
+
+# Platform Files
+.DS_Store
