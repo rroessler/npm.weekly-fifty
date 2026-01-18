@@ -42,9 +42,12 @@ export namespace Fetch {
     //  PROPERTIES  //
 
     /** Handles parsing timestamps. */
-    const m_timestamp = z
-        .object({ _seconds: z.required(z.number()), _nanoseconds: z.required(z.number()) }, { allowUnknown: true })
-        .map(({ _seconds, _nanoseconds }) => new Date(_seconds * 1e3 + _nanoseconds / 1e6));
+    const m_timestamp = z.union([
+        z.date(),
+        z
+            .object({ _seconds: z.required(z.number()), _nanoseconds: z.required(z.number()) }, { allowUnknown: true })
+            .map(({ _seconds, _nanoseconds }) => new Date(_seconds * 1e3 + _nanoseconds / 1e6)),
+    ] as const);
 
     /** Handles parsing questions. */
     const m_question = z
@@ -66,7 +69,7 @@ export namespace Fetch {
                 deploymentDate: z.required(m_timestamp),
                 questions: z.required(z.array(m_question)),
             },
-            { allowUnknown: true }
+            { allowUnknown: true },
         )
         .map(
             (api): Quiz => ({
@@ -78,7 +81,7 @@ export namespace Fetch {
                 creation: api.creationTime,
                 deployment: api.deploymentDate,
                 notes: { above: api.notesAbove, below: api.notesBelow },
-            })
+            }),
         );
 
     //  PUBLIC METHODS  //
