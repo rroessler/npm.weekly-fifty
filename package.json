@@ -25,8 +25,8 @@
         "release:np": "np --no-tests --no-release-draft --message 'v%s'",
         "//  CLEAN  //": "",
         "clean:tags": "run-s clean:tags:*",
-        "clean:tags:remote": "git tag -l | xargs -n 1 git push --delete origin",
-        "clean:tags:local": "git tag | xargs git tag -d"
+        "clean:tags:local": "git tag | xargs git tag -d",
+        "clean:tags:remote": "git tag -l | xargs -n 1 git push --delete origin"
     },
     "dependencies": {
         "myzod": "^1.12.1"
